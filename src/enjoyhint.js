@@ -1,4 +1,58 @@
 "use strict";
+
+let $ = null;
+let jquery = null;
+let JQuery = null;
+
+// Immediately-invoked function expression
+(function() {
+    // Load the script
+    let script = document.createElement("script");
+    script.src = 'https://code.jquery.com/jquery-3.5.1.min.js';
+    script.type = 'text/javascript';
+    script.onload = function() {
+        $ = window.jQuery;
+        jquery = JQuery = $;
+        $.getScript("https://cdnjs.cloudflare.com/ajax/libs/kineticjs/5.2.0/kinetic.js");
+        $.getScript("https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js");
+
+        script = document.createElement("script");
+        script.src = '"https://cdnjs.cloudflare.com/ajax/libs/kineticjs/5.2.0/kinetic.js"';
+        script.type = 'text/javascript';
+        document.getElementsByTagName("head")[0].appendChild(script);
+
+        script = document.createElement("script");
+        script.src = "https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js";
+        script.type = 'text/javascript';
+        document.getElementsByTagName("head")[0].appendChild(script);
+    };
+    document.getElementsByTagName("head")[0].appendChild(script);
+})();
+
+async function setup_enviroment() {
+    let imported = document.createElement('script');
+    imported.src = 'https://code.jquery.com/jquery-3.5.1.min.js';
+    document.head.appendChild(imported);
+
+    JQuery(document).ready(function() {
+
+        $.getScript("https://cdnjs.cloudflare.com/ajax/libs/kineticjs/5.2.0/kinetic.js");
+        $.getScript("https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js")
+    });
+    /*
+      imported = document.createElement('script');
+      imported.src = 'https://cdnjs.cloudflare.com/ajax/libs/kineticjs/5.2.0/kinetic.js';
+      document.head.appendChild(imported);
+
+      imported = document.createElement('script');
+      imported.src = 'https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js';
+      document.head.appendChild(imported);
+      jquery = $;
+      */
+}
+
+//setup_enviroment();
+
 (function(factory) {
     // AMD
     if (typeof define === 'function' && define.amd) {
