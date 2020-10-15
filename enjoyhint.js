@@ -29,7 +29,6 @@ let JQuery = null;
     document.getElementsByTagName("head")[0].appendChild(script);
 })();
 
-
 (function(factory) {
     // AMD
     if (typeof define === 'function' && define.amd) {
