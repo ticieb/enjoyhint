@@ -1,6 +1,6 @@
 {
   "name": "@cieb/enjoyhint",
-  "version": "5.0.4",
+  "version": "5.1.2",
   "description": "Web-tool that provides the simplest way to create interactive tutorials and hints.",
   "main": "enjoyhint.js",
   "scripts": {

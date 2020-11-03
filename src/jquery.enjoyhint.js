@@ -13,16 +13,16 @@ CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
 
 (function(factory) {
   'use strict';
-	if (typeof define === 'function' && define.amd) {
-		// AMD
-		define(['jquery', 'kinetic'], factory);
-	} else if (typeof module !== 'undefined' && module.exports) {
-		// CommonJS
-		module.exports = factory(require('jquery'), require('kinetic'));
-	} else {
-		// Global
-		factory(jQuery, Kinetic);
-	}
+  if (typeof define === 'function' && define.amd) {
+    // AMD
+    define(['jquery', 'kinetic'], factory);
+  } else if (typeof module !== 'undefined' && module.exports) {
+    // CommonJS
+    module.exports = factory(require('jquery'), require('kinetic'));
+  } else {
+    // Global
+    factory(jQuery, Kinetic);
+  }
 })(function($, Kinetic) {
   var that;
   var originalLabelLeft, originalLabelTop;
@@ -119,25 +119,25 @@ CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
         ).appendTo(that.enjoyhint);
         that.$canvas = $(
           '<canvas id="' +
-            canvas_id +
-            '" width="' +
-            that.canvas_size.w +
-            '" height="' +
-            that.canvas_size.h +
-            '" class="' +
-            that.cl.main_canvas +
-            '">'
+          canvas_id +
+          '" width="' +
+          that.canvas_size.w +
+          '" height="' +
+          that.canvas_size.h +
+          '" class="' +
+          that.cl.main_canvas +
+          '">'
         ).appendTo(that.enjoyhint);
         that.$svg = $(
           '<svg width="' +
-            that.canvas_size.w +
-            '" height="' +
-            that.canvas_size.h +
-            '" class="' +
-            that.cl.main_canvas +
-            " " +
-            that.cl.main_svg +
-            '">'
+          that.canvas_size.w +
+          '" height="' +
+          that.canvas_size.h +
+          '" class="' +
+          that.cl.main_canvas +
+          " " +
+          that.cl.main_svg +
+          '">'
         ).appendTo(that.enjoyhint_svg_wrapper);
 
         var defs = $(makeSVG("defs"));
@@ -296,7 +296,7 @@ CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
           var boundingClientRect = $(
             that.stepData.enjoyHintElementSelector
           )[0].getBoundingClientRect();
-          
+
           that.shape.attrs.center_x = Math.round(
             boundingClientRect.left + boundingClientRect.width / 2
           );
@@ -306,11 +306,11 @@ CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
           that.shape.attrs.width = boundingClientRect.width + 11;
           that.shape.attrs.height = boundingClientRect.height + 11;
 
-          function renderAfterResize(){
+          function renderAfterResize() {
             var newDataCoords = $(that.stepData.enjoyHintElementSelector).get(0).getBoundingClientRect();
 
-            that.stepData.center_x = newDataCoords.left + newDataCoords.width/2;
-            that.stepData.center_y = newDataCoords.top + newDataCoords.height/2;
+            that.stepData.center_x = newDataCoords.left + newDataCoords.width / 2;
+            that.stepData.center_y = newDataCoords.top + newDataCoords.height / 2;
             that.stepData.width = newDataCoords.width + 11;
             that.stepData.height = newDataCoords.height + 11;
 
@@ -321,10 +321,9 @@ CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
           }
 
           doit = setTimeout(function() {
-            if(boundingClientRect.top < 0 || boundingClientRect.bottom > (window.innerHeight || document.documentElement.clientHeight)){
-              $(document.body).scrollTo(that.stepData.enjoyHintElementSelector, 150, {offset: -200, onAfter:renderAfterResize});
-            }
-            else renderAfterResize();
+            if (boundingClientRect.top < 0 || boundingClientRect.bottom > (window.innerHeight || document.documentElement.clientHeight)) {
+              $(document.body).scrollTo(that.stepData.enjoyHintElementSelector, 150, { offset: -200, onAfter: renderAfterResize });
+            } else renderAfterResize();
           }, 150);
 
 
@@ -572,22 +571,22 @@ CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
           };
         };
 
-        that.setMarkerColor = function(color){
+        that.setMarkerColor = function(color) {
 
-            function isValidColor(value) {
-                const temp = new Option().style;
-                temp.color = value;
-                return temp.color !== '';
-            }
+          function isValidColor(value) {
+            const temp = new Option().style;
+            temp.color = value;
+            return temp.color !== '';
+          }
 
-            if (isValidColor(color)){
-                return [$("#poliline"), $("#enjoyhint_arrpw_line")].forEach(function(element){
-                    element.css("stroke", color);
-                });
-            }
+          if (isValidColor(color)) {
+            return [$("#poliline"), $("#enjoyhint_arrpw_line")].forEach(function(element) {
+              element.css("stroke", color);
+            });
+          }
 
-            $("#poliline").css("stroke", "rgb(255,255,255)")
-            console.log("Error: invalid color name property - " + color);
+          $("#poliline").css("stroke", "rgb(255,255,255)")
+          console.log("Error: invalid color name property - " + color);
         }
 
         that.renderArrow = function(data) {
@@ -598,12 +597,11 @@ CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
           var by_top_side = data.by_top_side;
           var control_point_x = 0;
           var control_point_y = 0;
-  
+
           if (by_top_side === 'hor') {
             control_point_x = x_to
             control_point_y = y_from
-          }
-          else {
+          } else {
             control_point_x = x_from
             control_point_y = y_to
           }
@@ -612,7 +610,7 @@ CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
 
           setTimeout(function() {
             $("#enjoyhint_arrpw_line").remove();
-            
+
             var d =
               "M" +
               x_from +
@@ -635,10 +633,10 @@ CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
               })
             );
 
-            if(that.stepData.arrowColor) {
-                that.setMarkerColor(that.stepData.arrowColor)
+            if (that.stepData.arrowColor) {
+              that.setMarkerColor(that.stepData.arrowColor)
             } else {
-                $("#poliline").css("stroke", "rgb(255, 255, 255)");
+              $("#poliline").css("stroke", "rgb(255, 255, 255)");
             }
 
             that.enjoyhint.removeClass(that.cl.svg_transparent);
@@ -647,9 +645,9 @@ CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
 
         that.getLabelElement = function(data) {
           return $("<div>", {
-            class: "enjoy_hint_label",
-            id: "enjoyhint_label"
-          })
+              class: "enjoy_hint_label",
+              id: "enjoyhint_label"
+            })
             .css({
               top: data.y + "px",
               left: data.x + "px"
@@ -787,8 +785,7 @@ CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
               data.center_x = sides_pos.left + half_w;
               data.center_y = sides_pos.top + half_h;
 
-              shape_data = that.renderRect(
-                {
+              shape_data = that.renderRect({
                   x: data.center_x,
                   y: data.center_y,
                   w: data.width,
@@ -827,31 +824,31 @@ CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
           var label_ver_offset = half_h + label_shift;
 
           var areas_for_label = [
-            {name: 'right_center', common_area: right_offset * window.innerHeight, width: right_offset, height: window.innerHeight},
-            {name: 'right_top', common_area: right_offset * top_offset, width: right_offset, height: top_offset},
-            {name: 'right_bottom', common_area: right_offset * bottom_offset, width: right_offset, height: bottom_offset},
-            {name: 'left_center', common_area: left_offset * window.innerHeight, width: left_offset, height: window.innerHeight},
-            {name: 'left_top', common_area: left_offset * top_offset, width: left_offset, height: top_offset},
-            {name: 'left_bottom', common_area: left_offset * bottom_offset, width: left_offset, height: bottom_offset},
-            {name: 'center_top', common_area: window.innerWidth * top_offset, width: window.innerWidth, height: top_offset},
-            {name: 'center_bottom', common_area: window.innerWidth * bottom_offset, width: window.innerWidth, height: bottom_offset},
+            { name: 'right_center', common_area: right_offset * window.innerHeight, width: right_offset, height: window.innerHeight },
+            { name: 'right_top', common_area: right_offset * top_offset, width: right_offset, height: top_offset },
+            { name: 'right_bottom', common_area: right_offset * bottom_offset, width: right_offset, height: bottom_offset },
+            { name: 'left_center', common_area: left_offset * window.innerHeight, width: left_offset, height: window.innerHeight },
+            { name: 'left_top', common_area: left_offset * top_offset, width: left_offset, height: top_offset },
+            { name: 'left_bottom', common_area: left_offset * bottom_offset, width: left_offset, height: bottom_offset },
+            { name: 'center_top', common_area: window.innerWidth * top_offset, width: window.innerWidth, height: top_offset },
+            { name: 'center_bottom', common_area: window.innerWidth * bottom_offset, width: window.innerWidth, height: bottom_offset },
           ];
           var label_horizontal_space_required = label_width;
           var label_vertical_space_required = window.innerHeight <= 670 ? label_shift_with_label_height : label_shift_with_label_height + 20;
 
           var areas_priority = areas_for_label
-            .sort(function(area1, area2){return area1.common_area - area2.common_area})
+            .sort(function(area1, area2) { return area1.common_area - area2.common_area })
 
           var label_hor_side = 'oversized';
           for (var i = 0; i < areas_priority.length; i++) {
-              var name = areas_priority[i].name;
-              var area = areas_priority[i]
-              if (
-                area.width > label_horizontal_space_required
-                && area.height > label_vertical_space_required
-              ) {
-                  label_hor_side = name;
-              }
+            var name = areas_priority[i].name;
+            var area = areas_priority[i]
+            if (
+              area.width > label_horizontal_space_required &&
+              area.height > label_vertical_space_required
+            ) {
+              label_hor_side = name;
+            }
           }
 
           var data_width_size = data.shape === "circle" ? data.radius * 2 :
@@ -860,72 +857,72 @@ CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
           var data_height_size = data.shape === "circle" ? data.radius * 2 :
             data.height ? data.height : data.radius * 2;
 
-          var right_position = data.center_x + data_width_size/2 + 80;
-          var left_position = data.center_x - label_width - data_width_size/2 - 80;
+          var right_position = data.center_x + data_width_size / 2 + 80;
+          var left_position = data.center_x - label_width - data_width_size / 2 - 80;
           var central_position = window.innerWidth / 2 - label_width / 2;
           var top_position = data.center_y - label_ver_offset - label_height;
           var bottom_position = data.center_y + label_ver_offset;
-          var central_ver_position = window.innerHeight/2 - label_vertical_space_required/2 + 20;
-          
+          var central_ver_position = window.innerHeight / 2 - label_vertical_space_required / 2 + 20;
+
           var label_x, label_y, x_to, y_to, x_from, y_from;
-          
+
           var by_top_side = "hor"
 
-          switch(label_hor_side) {
+          switch (label_hor_side) {
             case "center_top":
-                label_y = top_position;
-                label_x = central_position;
-                x_to = data.center_x;
-                y_to = data.center_y - data_height_size/2 - 20;
-                break;
+              label_y = top_position;
+              label_x = central_position;
+              x_to = data.center_x;
+              y_to = data.center_y - data_height_size / 2 - 20;
+              break;
             case "center_bottom":
-                label_y = bottom_position;
-                label_x = central_position;
-                x_to = data.center_x;
-                y_to = data.center_y + data_height_size/2 + 20;
-                break;
+              label_y = bottom_position;
+              label_x = central_position;
+              x_to = data.center_x;
+              y_to = data.center_y + data_height_size / 2 + 20;
+              break;
             case 'left_center':
-                label_y = central_ver_position;
-                label_x = left_position;
-                x_to = data.center_x - data_width_size/2 - 20;
-                y_to = data.center_y;
-                by_top_side = "ver";  
-                break;
+              label_y = central_ver_position;
+              label_x = left_position;
+              x_to = data.center_x - data_width_size / 2 - 20;
+              y_to = data.center_y;
+              by_top_side = "ver";
+              break;
             case 'left_top':
-                label_y = top_position;
-                label_x = left_position;
-                x_to = data.center_x - data_width_size/2;
-                y_to = data.center_y - 20;
-                break;
+              label_y = top_position;
+              label_x = left_position;
+              x_to = data.center_x - data_width_size / 2;
+              y_to = data.center_y - 20;
+              break;
             case 'left_bottom':
-                label_y = bottom_position;
-                label_x = left_position;
-                x_to = data.center_x - data_width_size/2;
-                y_to = data.center_y + 20;
-                by_top_side = "ver";  
-                break;
+              label_y = bottom_position;
+              label_x = left_position;
+              x_to = data.center_x - data_width_size / 2;
+              y_to = data.center_y + 20;
+              by_top_side = "ver";
+              break;
             case 'right_center':
-                label_y = central_ver_position;
-                label_x = right_position;
-                x_to = data.center_x + data_width_size/2 + 20;
-                y_to = data.center_y;
-                by_top_side = "ver";  
-                break;
+              label_y = central_ver_position;
+              label_x = right_position;
+              x_to = data.center_x + data_width_size / 2 + 20;
+              y_to = data.center_y;
+              by_top_side = "ver";
+              break;
             case 'right_top':
-                label_y = top_position;
-                label_x = right_position;
-                x_to = data.center_x + data_width_size/2;
-                y_to = data.center_y - 20;
-                break;            
+              label_y = top_position;
+              label_x = right_position;
+              x_to = data.center_x + data_width_size / 2;
+              y_to = data.center_y - 20;
+              break;
             case 'right_bottom':
-                label_y = bottom_position;
-                label_x = right_position;
-                x_to = data.center_x + data_width_size/2;
-                y_to = data.center_y + 20;
-                by_top_side = "ver";  
-                break;
+              label_y = bottom_position;
+              label_x = right_position;
+              x_to = data.center_x + data_width_size / 2;
+              y_to = data.center_y + 20;
+              by_top_side = "ver";
+              break;
             case 'oversized':
-              setTimeout(function(){
+              setTimeout(function() {
                 $("#enjoyhint_arrpw_line").remove();
                 $('.enjoy_hint_label').css({
                   'border-radius': '20px',
@@ -938,23 +935,22 @@ CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
                   'transition': 'background-color ease-out 0.5s'
                 })
               }, 450)
-                label_y = central_ver_position
-                label_x = central_position;
-                break;
+              label_y = central_ver_position
+              label_x = central_position;
+              break;
           }
 
-          x_from = label_x + label_width/2;
-          y_from = (data.center_y > label_y + label_height/2) ? label_y + label_height : label_y;
+          x_from = label_x + label_width / 2;
+          y_from = (data.center_y > label_y + label_height / 2) ? label_y + label_height : label_y;
           // if data center out of window y scale
-          if(data.center_y < 0) {
+          if (data.center_y < 0) {
             y_to = 20
-          }
-          else if ( data.center_y > window.innerHeight + 20 ) {
+          } else if (data.center_y > window.innerHeight + 20) {
             y_to = window.innerHeight - 20
           };
 
           // if element at the same position as hint
-          if(data.center_y >= label_y && data.center_y <= label_y + label_height) {
+          if (data.center_y >= label_y && data.center_y <= label_y + label_height) {
             x_from = data.center_x > label_x ? label_x + label_width : label_x;
             y_from = data.center_y;
           }
@@ -965,15 +961,15 @@ CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
             text: data.text
           });
 
-          setTimeout(function(){
+          setTimeout(function() {
             var summoryButtonWidth = that.$next_btn.width() + that.$skip_btn.width() + that.$prev_btn.width() + 30;
             var distance = label_x - 100;
             var ver_button_position = label_y + label_height + 40
-            
+
             if (summoryButtonWidth + label_x > x_to) {
-            distance = x_to >= x_from ? x_to + 20 : label_x + label_width/2
+              distance = x_to >= x_from ? x_to + 20 : label_x + label_width / 2
             }
-              
+
             if (summoryButtonWidth + distance > window.innerWidth || distance < 0) {
               distance = 10;
               ver_button_position = y_from < y_to ? label_y - 80 : label_y + label_height + 40
@@ -987,8 +983,7 @@ CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
               ver_button_position = 10;
               that.$next_btn.html('&#8250;');
               that.$prev_btn.html('&#8249;');
-            }
-            else {
+            } else {
               distance = initial_distance;
               ver_button_position = initial_ver_position;
               that.$next_btn.html('Next');
@@ -1007,7 +1002,7 @@ CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
               left_skip = distance + that.$prev_btn.width() + 10;
             }
 
-            if(that.prevBtn === "hide") {
+            if (that.prevBtn === "hide") {
               left_next = distance;
               left_skip = distance + that.$next_btn.width() + 10;
             }
