@@ -204,9 +204,7 @@ let JQuery = null;
 
                 if (isHintInViewport.top < 0 || isHintInViewport.bottom > (window.innerHeight || document.documentElement.clientHeight)) {
                     hideCurrentHint();
-                    console.log("check");
-                    if (typeof $(document.body).scrollTo === 'function')
-                        $(document.body).scrollTo(step_data.selector, step_data.scrollAnimationSpeed || 250, { offset: -200 });
+                    $(document.body).scrollTo(step_data.selector, step_data.scrollAnimationSpeed || 250, { offset: -200 });
                 } else {
                     // if previous button has been clicked and element are in viewport to prevent custom step scrollAnimationSpeed set scrollSpeed to default
                     scrollSpeed = 250;
