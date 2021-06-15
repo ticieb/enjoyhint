@@ -204,7 +204,11 @@ let JQuery = null;
 
                 if (isHintInViewport.top < 0 || isHintInViewport.bottom > (window.innerHeight || document.documentElement.clientHeight)) {
                     hideCurrentHint();
-                    $(document.body).scrollTo(step_data.selector, step_data.scrollAnimationSpeed || 250, { offset: -200 });
+                    if (typeof $(document.body).scrollTo === 'function'){
+                        $(document.body).scrollTo(step_data.selector, step_data.scrollAnimationSpeed || 250, { offset: -200 });
+                    } else {
+                        $(window).scrollTop($(step_data.selector).offset().top - 200);
+                    }
                 } else {
                     // if previous button has been clicked and element are in viewport to prevent custom step scrollAnimationSpeed set scrollSpeed to default
                     scrollSpeed = 250;
@@ -901,7 +905,11 @@ CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
 
                     doit = setTimeout(function() {
                         if (boundingClientRect.top < 0 || boundingClientRect.bottom > (window.innerHeight || document.documentElement.clientHeight)) {
-                            $(document.body).scrollTo(that.stepData.enjoyHintElementSelector, 150, { offset: -200, onAfter: renderAfterResize });
+                            if (typeof $(document.body).scrollTo === 'function'){
+                                $(document.body).scrollTo(that.stepData.enjoyHintElementSelector, 150, { offset: -200, onAfter: renderAfterResize });
+                            } else {
+                                $(window).scrollTop($(that.stepData.enjoyHintElementSelector).offset().top - 200);
+                            }
                         } else renderAfterResize();
                     }, 150);
 
@@ -2088,7 +2096,11 @@ CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
 
                     doit = setTimeout(function() {
                         if (boundingClientRect.top < 0 || boundingClientRect.bottom > (window.innerHeight || document.documentElement.clientHeight)) {
-                            $(document.body).scrollTo(that.stepData.enjoyHintElementSelector, 150, { offset: -200, onAfter: renderAfterResize });
+                            if (typeof $(document.body).scrollTo === 'function'){
+                                $(document.body).scrollTo(that.stepData.enjoyHintElementSelector, 150, { offset: -200, onAfter: renderAfterResize });
+                            } else {
+                                $(window).scrollTop($(that.stepData.enjoyHintElementSelector).offset().top - 200);
+                            }
                         } else renderAfterResize();
                     }, 150);
 
@@ -3274,7 +3286,11 @@ CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
 
                     doit = setTimeout(function() {
                         if (boundingClientRect.top < 0 || boundingClientRect.bottom > (window.innerHeight || document.documentElement.clientHeight)) {
-                            $(document.body).scrollTo(that.stepData.enjoyHintElementSelector, 150, { offset: -200, onAfter: renderAfterResize });
+                            if (typeof $(document.body).scrollTo === 'function'){
+                                $(document.body).scrollTo(that.stepData.enjoyHintElementSelector, 150, { offset: -200, onAfter: renderAfterResize });
+                            } else {
+                                $(window).scrollTop($(that.stepData.enjoyHintElementSelector).offset().top - 200);
+                            }
                         } else renderAfterResize();
                     }, 150);
 
